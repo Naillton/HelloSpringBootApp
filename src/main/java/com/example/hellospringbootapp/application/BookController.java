@@ -1,9 +1,9 @@
 package com.example.hellospringbootapp.application;
 
 import com.example.hellospringbootapp.domain.Book;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Response;
 import org.springframework.stereotype.Controller;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;

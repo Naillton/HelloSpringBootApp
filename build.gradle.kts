@@ -11,18 +11,28 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_17
 }
 
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-jersey")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-web-services")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.session:spring-session-core")
+	compileOnly("org.projectlombok:lombok")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	implementation("javax.ws.rs:javax.ws.rs-api:2.1.1")
-	compileOnly("javax.servlet:javax.servlet-api:4.0.1")
-	implementation("org.glassfish.jersey.core:jersey-server:3.1.2")
-	implementation("org.glassfish.jersey.containers:jersey-container-servlet:3.1.2")
-	implementation("org.glassfish.jersey.media:jersey-media-json-jackson:3.1.2")
+	testImplementation("io.projectreactor:reactor-test")
 }
 
 tasks.withType<Test> {
