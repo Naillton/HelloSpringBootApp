@@ -29,7 +29,7 @@ public class Book {
     return this.id;
   }
 
-  private String getName() {
+  public String getName() {
     return this.name;
   }
 
