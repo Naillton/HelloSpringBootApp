@@ -8,8 +8,6 @@ public class Book {
 
   private String title;
 
-  private String name;
-
   private String author;
 
   private String desc;
@@ -19,22 +17,17 @@ public class Book {
   public Book(String title, String author, String desc, int totalPages) {
     this.id = UUID.randomUUID();
     this.title = title;
-    this.name = "n";
     this.author = author;
     this.desc = desc;
     this.totalPages = totalPages;
   }
 
+  public Book(){
+    this.id = UUID.randomUUID();
+  }
+
   public UUID getId() {
     return this.id;
-  }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public String getTitle() {
