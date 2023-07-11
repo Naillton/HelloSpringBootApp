@@ -6,14 +6,23 @@ import java.util.UUID;
 public class Book {
   private UUID id;
 
+  private String title;
+
   private String name;
 
   private String author;
 
-  public Book(String name, String author) {
+  private String desc;
+
+  private int totalPages;
+
+  public Book(String title, String author, String desc, int totalPages) {
     this.id = UUID.randomUUID();
-    this.name = name;
+    this.title = title;
+    this.name = "n";
     this.author = author;
+    this.desc = desc;
+    this.totalPages = totalPages;
   }
 
   public UUID getId() {
@@ -28,11 +37,35 @@ public class Book {
     this.name = name;
   }
 
+  public String getTitle() {
+    return this.title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
   public String getAuthor() {
     return this.author;
   }
 
   public void setAuthor(String author) {
     this.author = author;
+  }
+
+  public String getDesc() {
+    return this.desc;
+  }
+
+  public void setDesc(String desc) {
+    this.desc = desc;
+  }
+
+  public int getTotalPages() {
+    return this.totalPages;
+  }
+
+  public void setTotalPages(int totalPages) {
+    this.totalPages = totalPages;
   }
 }

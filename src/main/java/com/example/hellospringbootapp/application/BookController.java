@@ -4,6 +4,7 @@ import com.example.hellospringbootapp.domain.Book;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.springframework.stereotype.Controller;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -43,6 +44,37 @@ public class BookController {
       return Response.ok(book).build();
     } catch (NoSuchElementException e) {
       return Response.status(404).build();
+    }
+  }
+
+  @PUT
+  @Path("/{id}")
+  @Consumes("application/json")
+  @Produces("application/json")
+  public Response update(@PathParam("id") UUID id, Book book) {
+    try {
+      return Response.ok(books.stream().filter(b -> b.getId().equals(id))
+              .map(b -> {
+                b.setTitle(book.getTitle());
+                b.setDesc(book.getDesc());
+                b.setAuthor(book.getAuthor());
+                b.setTotalPages(book.getTotalPages());
+                return book;
+              })).build();
+    } catch (NoSuchElementException e) {
+      return Response.status(404).build();
+    }
+  }
+
+  @DELETE
+  @Path("/{id}")
+  public  Response deleted(@PathParam("id") UUID id) {
+    try {
+      Book deleted = books.stream().filter(b -> b.getId().equals(id)).findAny().orElseThrow();
+      books.remove(deleted);
+      return Response.ok().build();
+    } catch (NoSuchElementException e) {
+      return Response.status(500).build();
     }
   }
 }
